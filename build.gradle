@@ -7,6 +7,8 @@ buildscript {
         jcenter()
         mavenCentral()
         maven { url 'https://jitpack.io' }
+        // Add the Maven address.
+        maven { url 'https://developer.huawei.com/repo/' }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:8.1.2'
@@ -15,6 +17,9 @@ buildscript {
         // for AspectJ : AOP
         classpath 'org.aspectj:aspectjtools:1.9.8'
         classpath 'org.aspectj:aspectjweaver:1.9.8'
+
+        // Add dependencies.
+        classpath 'com.huawei.agconnect:agcp:1.9.1.302'
     }
 }
 
@@ -24,6 +29,8 @@ allprojects {
         mavenCentral()
         jcenter()
         maven { url 'https://jitpack.io' }
+        // Add the Maven address.
+        maven {url 'https://developer.huawei.com/repo/'}
 
         flatDir {
             dirs project(':demo').file('libs')

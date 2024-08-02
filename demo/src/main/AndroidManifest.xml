@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.novice.demo">
 
+    <uses-permission android:name="android.permission.RECEIVE_NOTIFICATIONS"/>
+
     <application
         android:name=".application.DemoApplication"
         android:allowBackup="true"
@@ -23,15 +25,23 @@
 
         </provider>
 
+        <service
+            android:name=".module.hmspush.MyPushService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.huawei.push.action.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
         <activity
             android:name=".module.home.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.Base.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
 
         <activity
@@ -84,6 +94,18 @@
         <activity
             android:name=".module.pdfreader.PDFReaderActivity"
             android:screenOrientation="fullSensor" />
+        <activity
+            android:name=".module.hmspush.HMSPushActivity"
+            android:screenOrientation="fullSensor" />
+        <activity
+            android:exported="true"
+            android:name=".module.reader.FileReaderActivity"
+            android:screenOrientation="fullSensor" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
     </application>
 

@@ -10,8 +10,10 @@ import com.novice.demo.module.container.ContainerActivity
 import com.novice.demo.module.customstatuslayout.CustomStatusLayout1Activity
 import com.novice.demo.module.customstatuslayout.CustomStatusLayout2Activity
 import com.novice.demo.module.dialog.CommonAlertDialogActivity
+import com.novice.demo.module.hmspush.HMSPushActivity
 import com.novice.demo.module.list.ListActivity
 import com.novice.demo.module.pdfreader.PDFReaderActivity
+import com.novice.demo.module.reader.FileReaderActivity
 import com.novice.demo.module.statuslayout.StatusLayoutActivity
 import com.novice.demo.module.viewpager2.DragActivity
 import com.novice.demo.module.viewpager2.ViewPager2Activity
@@ -36,9 +38,11 @@ class MainActivity : BaseActivity<ActivityMainBinding, DefaultViewModel>() {
     private fun initRecyclerView() {
         val adapter = MainAdapter()
         val list = mutableListOf(
-            "基础控件", "CommonAlertDialog", "StatusLayout", "自定义StatusLayout", "完全自定义StatusLayout",
-            "指定StatusLayout覆盖区域", "SimpleList", "CommonWeb",
-            "ViewPager2", "drag","AspectJ","PDFReader"
+//            "基础控件", "CommonAlertDialog", "StatusLayout", "自定义StatusLayout", "完全自定义StatusLayout",
+//            "指定StatusLayout覆盖区域", "SimpleList", "CommonWeb",
+//            "ViewPager2", "drag","AspectJ","PDFReader",
+//            "HMSPush"
+            "过滤器"
         )
         mBinding.recyclerView.adapter = adapter
         mBinding.recyclerView.layoutManager = GridLayoutManagerWrap(this, 2)
@@ -80,6 +84,13 @@ class MainActivity : BaseActivity<ActivityMainBinding, DefaultViewModel>() {
                 }
                 "PDFReader" ->{
                     PDFReaderActivity.start(this)
+                }
+                "HMSPush" ->{
+                    HMSPushActivity.start(this)
+                }
+                "过滤器" ->{
+                    FileReaderActivity.start(this)
+
                 }
                 else ->{}
             }

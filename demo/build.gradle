@@ -1,23 +1,41 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'com.huawei.agconnect'
 }
 
 android {
     namespace = "com.novice.demo"
 
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+
+    signingConfigs {
+        LiveKeystore {
+            keyAlias 'zxtx'
+            keyPassword 'zxtx123'
+            storeFile file('../sjd.jks')
+            storePassword 'zxtx123'
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
+
     defaultConfig {
-        applicationId "com.novice.libbasedemo"
+        applicationId "com.novice.demo"
         minSdkVersion rootProject.ext.android["minSdkVersion"]
         targetSdkVersion rootProject.ext.android["targetSdkVersion"]
         versionCode rootProject.ext.android["versionCode"]
         versionName rootProject.ext.android["versionName"]
+        signingConfig signingConfigs.LiveKeystore
         multiDexEnabled true
     }
 
     buildTypes {
+        debug {
+            signingConfig signingConfigs.LiveKeystore
+        }
         release {
+            signingConfig signingConfigs.LiveKeystore
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -42,6 +60,11 @@ dependencies {
     api dep.eventBus
     api dep.buglyUpdate
     api dep.buglyNative
+
+    // HMS Push kit
+    implementation 'com.huawei.hms:push:6.12.0.300'
+//    // Add dependencies.
+//    implementation 'com.huawei.agconnect:agconnect-core:1.8.1.300'
 }
 
 apply from: '../aspectj.gradle'

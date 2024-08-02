@@ -4,7 +4,7 @@
     <color name="status_layout_background_color">#FFFFFF</color>
     <color name="status_layout_tip_text_color">#666666</color>
 
-    <color name="common_dialog_bg">#20000000</color>
+    <color name="common_dialog_bg">#60000000</color>
     <color name="common_black_color">#252525</color>
     <color name="common_gray_color">#F3F5F9</color>
     <color name="common_purple_color">#241640</color>
